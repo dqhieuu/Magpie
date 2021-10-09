@@ -22,8 +22,20 @@ bool App::Initialize(HINSTANCE hInst) {
 
 	_hInst = hInst;
 
+	DWORD taskIndex = 0;
+	HANDLE handle = AvSetMmThreadCharacteristics(L"DisplayPostProcessing", &taskIndex);
+	if (handle == 0) {
+		SPDLOG_LOGGER_ERROR(logger, MakeWin32ErrorMsg("AvSetMmThreadCharacteristics 失败"));
+	}
+
+	HRESULT hr = DwmEnableMMCSS(TRUE);
+	if (FAILED(hr)) {
+		SPDLOG_LOGGER_CRITICAL(logger, MakeComErrorMsg("DwmEnableMMCSS 失败", hr));
+		return false;
+	}
+
 	// 初始化 COM
-	HRESULT hr = Windows::Foundation::Initialize(RO_INIT_MULTITHREADED);
+	hr = Windows::Foundation::Initialize(RO_INIT_MULTITHREADED);
 	if (FAILED(hr)) {
 		SPDLOG_LOGGER_CRITICAL(logger, MakeComErrorMsg("初始化 COM 失败", hr));
 		return false;

@@ -36,8 +36,8 @@ bool Renderer::Initialize() {
 }
 
 bool Renderer::InitializeEffectsAndCursor() {
-	EffectDesc desc{};
-	EffectCompiler::Compile(L"shaders/test.hlsl", desc);
+	/*EffectDesc desc{};
+	EffectCompiler::Compile(L"shaders/test.hlsl", desc);*/
 
 	Effect& effect = _effects.emplace_back();
 	if (!effect.InitializeFsr()) {

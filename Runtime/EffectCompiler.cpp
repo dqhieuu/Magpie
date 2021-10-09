@@ -311,5 +311,5 @@ UINT EffectCompiler::_ResolveHeader(std::string_view block, EffectDesc& desc) {
 
 UINT EffectCompiler::_ResolveConstants(std::string_view block, EffectDesc& desc) {
 	// 可选的选项：VALUE，DEFAULT，LABEL，MIN，MAX，INCLUDE_MIN，INCLUDE_MAX
-
+	return 0;
 }

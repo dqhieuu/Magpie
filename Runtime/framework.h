@@ -45,6 +45,7 @@
 #include <wrl/client.h>
 #include <dwmapi.h>
 #include <profileapi.h>
+#include <avrt.h>
 
 // C++ 运行时头文件
 #include <string>
@@ -75,3 +76,4 @@
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "windowsapp")
 #pragma comment(lib, "dwmapi.lib")
+#pragma comment(lib, "avrt.lib")
